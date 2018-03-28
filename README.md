@@ -1,187 +1,233 @@
-# yii-guesthouse
+<p align="center">
+    <a href="https://github.com/yiisoft" target="_blank">
+        <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">
+    </a>
+    <h1 align="center">Yii 2 Basic Project Template</h1>
+    <br>
+</p>
 
-################ADD CONSTANT###################
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScript('site_config', 'constants', '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:'.$_EXTKEY.'/Configuration/TypoScript/Constant/constant.txt">');
+Yii 2 Basic Project Template is a skeleton [Yii 2](http://www.yiiframework.com/) application best for
+rapidly creating small projects.
 
-#############PRINT QUERY 8.7############
-$queryParser = $this->objectManager->get(\TYPO3\CMS\Extbase\Persistence\Generic\Storage\Typo3DbQueryParser::class);
- \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($queryParser->convertQueryToDoctrineQueryBuilder($query)->getSQL());
- \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($queryParser->convertQueryToDoctrineQueryBuilder($query)->getParameters());
- ################################################################3
- 
- https://blogs.msdn.microsoft.com/bethmassi/2011/02/09/how-to-send-automated-appointments-from-a-lightswitch-application/
-sudo FLOW_CONTEXT=Development/Application ./flow mt:createevent
-sudo FLOW_CONTEXT=Development/Application ./flow doctrine:migrate
-sudo FLOW_CONTEXT=Development/Application ./flow doctrine:validate
-sudo FLOW_CONTEXT=Development/Application ./flow flow:doctrine:update
-sudo FLOW_CONTEXT=Development/Application ./flow mt:importstatic
- activateevent:sendremaindermail
-sudo FLOW_CONTEXT=Development/Application ./flow mt:createuseraccount
-sudo FLOW_CONTEXT=Development/Application ./flow configuration:validate
-sudo FLOW_CONTEXT=Development/Application ./flow flow:cache:flush
-sudo FLOW_CONTEXT=Development/Application ./flow flow:security:showeffectivepolicy
-sudo FLOW_CONTEXT=Development/Application ./flow flow:security:showmethodsforprivilegetarget
+The template contains the basic features including user login/logout and a contact page.
+It includes all commonly used configurations that would allow you to focus on adding new
+features to your application.
 
-sudo FLOW_CONTEXT=Development/Application ./flow security:showunprotectedactions
-sudo FLOW_CONTEXT=Development/Application ./flow core:migrate --package-key MeetingTool.Portal
-###############################################################################################################
-ssh -i /home/drc/id_rsa root@domain
-#############################################################################################################
-function loadTS($pageUid) {
-      $backendUtility = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Backend\\Utility\\BackendUtility');
-      $rootLine = $backendUtility->BEgetRootline($pageUid);
-      $TSObj = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\TypoScript\\TemplateService');
-      $TSObj->tt_track = 0;
-      $TSObj->init();
-      $TSObj->runThroughTemplates($rootLine);
-      $TSObj->generateConfig();
-      return $TSObj->setup['config.']['baseURL'];
-  }
-######################TYPOscript assign object################################
-<f:cObject typoscriptObjectPath="menu.content" data="{a:'3'}" />
+[![Latest Stable Version](https://img.shields.io/packagist/v/yiisoft/yii2-app-basic.svg)](https://packagist.org/packages/yiisoft/yii2-app-basic)
+[![Total Downloads](https://img.shields.io/packagist/dt/yiisoft/yii2-app-basic.svg)](https://packagist.org/packages/yiisoft/yii2-app-basic)
+[![Build Status](https://travis-ci.org/yiisoft/yii2-app-basic.svg?branch=master)](https://travis-ci.org/yiisoft/yii2-app-basic)
 
-    special = directory
-    special.value.cObject < lib.pidvalue
-#######################################TYposcript check POST value#######################
-[globalVar = _POST|tx_powermail_pi1|field|newsletter|0 = newsletter]
-#########################Slow Span in rte and wrap it##########################
-RTE.default.contentCSS = fileadmin/RTE/rte.css   # here I create the rte.css file and insert 2 classes (.price1 and .price2)
+DIRECTORY STRUCTURE
+-------------------
 
-RTE.default.buttons.textstyle.showTagFreeClasses = 1
-RTE.default.buttons.blockstyle.showTagFreeClasses = 1
-
-RTE.default.proc.allowedClasses := addToList(price1, price2)
-RTE.classes {
-price1.name = Preis Gross
-price1.value = background-color: #fff; color: #333;
-}
-RTE.classes {
-price2.name = Preis klein
-price1.value = background-color: #fff; color: #333;
-}
-
-RTE.default.buttons {
- textstyle.tags.span.allowedClasses  := addToList(price1, price2)
-}
-RTE.default.FE < RTE.default
-
-###################################################################
-
-##################################################PHP 5.6 and 7.1###########
-apt-get dist-upgrade
-
-
->sudo add-apt-repository ppa:ondrej/php
->sudo apt-get update
->sudo apt-get install php7.0 php5.6 php5.6-mysql php-gettext php5.6-mbstring php-mbstring php7.0-mbstring php-xdebug libapache2-mod-php5.6 libapache2-mod-php7.0
->sudo apt install php libapache2-mod-php
->sudo apt install php7.0-mbstring
-
-2. Switch PHP version:
-
-From php5 to php7.0 :
-  Apache:
-  sudo a2dismod php5 ; sudo a2enmod php7.1 ; sudo service apache2 restart
-  CLI:
-  sudo update-alternatives --set php /usr/bin/php7.1
-From php7.1 to php5.6 :
-  Apache:
-  sudo a2dismod php7.1 ; sudo a2enmod php5 ; sudo service apache2 restart
-  CLI:
-  sudo update-alternatives --set php /usr/bin/php5
+      assets/             contains assets definition
+      commands/           contains console commands (controllers)
+      config/             contains application configurations
+      controllers/        contains Web controller classes
+      mail/               contains view files for e-mails
+      models/             contains model classes
+      runtime/            contains files generated during runtime
+      tests/              contains various tests for the basic application
+      vendor/             contains dependent 3rd-party packages
+      views/              contains view files for the Web application
+      web/                contains the entry script and Web resources
 
 
 
-#######################################################################
+REQUIREMENTS
+------------
+
+The minimum requirement by this project template that your Web server supports PHP 5.4.0.
 
 
-sudo service apache2 restart
+INSTALLATION
+------------
 
-#############################Virtual Host##########################3
-$ cd /etc/apache2/sites-available/
-$ sudo cp 000-default.conf event2.localhost.com.conf
-$ vim site1.example.com.conf
-<VirtualHost *:80>
-        ServerAdmin webmaster@event2.localhost.com
-        ServerName event2.localhost.com
-        DocumentRoot /var/www/html/foldername
-</VirtualHost>
-$ a2ensite event2.localhost.com ==>include new file on load
-$ service apache2 reload
-cd /etc/
-vim hosts
-192.168.1.100  site1.example.com ==>in host file
-###################################################################3
+### Install via Composer
 
-#####################################################
- if (!(@is_dir($destinationFolder) || @mkdir($destinationFolder, 0777, true))) {
-######################################
+If you do not have [Composer](http://getcomposer.org/), you may install it by following the instructions
+at [getcomposer.org](http://getcomposer.org/doc/00-intro.md#installation-nix).
 
-If Error of user rights :
-git clone [http link]
-git branch
-sudo service apache2 restart|stop|start
-git checkout -b [new branch]
+You can then install this project template using the following command:
 
-	1) exec ssh-agent bash
-	2) ssh-add ../id_rsa
-	 exec ssh-agent bash
-     ssh-add ../../../id_rsa
+~~~
+php composer.phar create-project --prefer-dist --stability=dev yiisoft/yii2-app-basic basic
+~~~
 
-composer create-project --no-dev --prefer-source
+Now you should be able to access the application through the following URL, assuming `basic` is the directory
+directly under the Web root.
 
-'installToolPassword' => '$1$ZPhMgX9v$vxgBRXrQtseNQq6CfqAZ31',
-GIT Commit Commands :
-1) git checkout -b final origin/master
-2) ==> git status
-3) git config core.fileMode false
-5) git add .(sudo chmod 777 -R .git/objects)
-6) git commit -a // git commit -a --amend
-7) git push origin HEAD:refs/for/master // git push -u origin master
-############################################################################
+~~~
+http://localhost/basic/web/
+~~~
 
-t3lib_div::debug($out);exit;
-\TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_petitie_domain_model_counter.first_name','petitie')
+### Install from an Archive File
 
- \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($);exit;
-\TYPO3\CMS\Core\Utility\DebugUtility::debug($this->request->getArguments());exit;
+Extract the archive file downloaded from [yiiframework.com](http://www.yiiframework.com/download/) to
+a directory named `basic` that is directly under the Web root.
 
-#########################LIGHTBOX CLASS##############################
-lib.contentElement.variables.10 = LOAD_REGISTER
-lib.contentElement.variables.10.content_uid = TEXT
-lib.contentElement.variables.10.content_uid.field = uid
-lib.contentElement.settings.media.popup.linkParams.ATagParams.dataWrap = class="lightbox" data-fancybox-group="lightbox{register:content_uid}"
-lib.contentElement.stdWrap.append = RESTORE_REGISTER
-#############################################################################
-###########################################TRANSLATE###########################
-\TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('Label.mailSent','sail_offer')
-<f:translate id="Label.addCompany" />
-{f:translate(id:'Label.save')}
+Set cookie validation key in `config/web.php` file to some random secret string:
+
+```php
+'request' => [
+    // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
+    'cookieValidationKey' => '<secret random string goes here>',
+],
+```
+
+You can then access the application through the following URL:
+
+~~~
+http://localhost/basic/web/
+~~~
 
 
-#################################################################################
-#################################Header image######################
-page.footerData {
-  10 = FILES
-  10 {
-     references.data =  levelmedia:-1, slide
-     references.listNum = 0
-     renderObj = TEXT
-     renderObj.data = file:current:publicUrl
+### Install with Docker
 
-     renderObj.wrap (
-     .title-1 {
-        background-image: url(../|);
-      }
-    )
-  }
-}
-####################################################################
+Update your vendor packages
 
-###################################################################3
-$configurationManager = \t3lib_div::makeInstance('Tx_Extbase_Configuration_ConfigurationManager');
+    docker-compose run --rm php composer update --prefer-dist
+    
+Run the installation triggers (creating cookie validation code)
 
-    $this->settings = $configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS,'typo3forum','pi1');
+    docker-compose run --rm php composer install    
+    
+Start the container
 
-########################################Debug#################################
+    docker-compose up -d
+    
+You can then access the application through the following URL:
 
+    http://127.0.0.1:8000
+
+**NOTES:** 
+- Minimum required Docker engine version `17.04` for development (see [Performance tuning for volume mounts](https://docs.docker.com/docker-for-mac/osxfs-caching/))
+- The default configuration uses a host-volume in your home directory `.docker-composer` for composer caches
+
+
+CONFIGURATION
+-------------
+
+### Database
+
+Edit the file `config/db.php` with real data, for example:
+
+```php
+return [
+    'class' => 'yii\db\Connection',
+    'dsn' => 'mysql:host=localhost;dbname=yii2basic',
+    'username' => 'root',
+    'password' => '1234',
+    'charset' => 'utf8',
+];
+```
+
+**NOTES:**
+- Yii won't create the database for you, this has to be done manually before you can access it.
+- Check and edit the other files in the `config/` directory to customize your application as required.
+- Refer to the README in the `tests` directory for information specific to basic application tests.
+
+
+TESTING
+-------
+
+Tests are located in `tests` directory. They are developed with [Codeception PHP Testing Framework](http://codeception.com/).
+By default there are 3 test suites:
+
+- `unit`
+- `functional`
+- `acceptance`
+
+Tests can be executed by running
+
+```
+vendor/bin/codecept run
+```
+
+The command above will execute unit and functional tests. Unit tests are testing the system components, while functional
+tests are for testing user interaction. Acceptance tests are disabled by default as they require additional setup since
+they perform testing in real browser. 
+
+
+### Running  acceptance tests
+
+To execute acceptance tests do the following:  
+
+1. Rename `tests/acceptance.suite.yml.example` to `tests/acceptance.suite.yml` to enable suite configuration
+
+2. Replace `codeception/base` package in `composer.json` with `codeception/codeception` to install full featured
+   version of Codeception
+
+3. Update dependencies with Composer 
+
+    ```
+    composer update  
+    ```
+
+4. Download [Selenium Server](http://www.seleniumhq.org/download/) and launch it:
+
+    ```
+    java -jar ~/selenium-server-standalone-x.xx.x.jar
+    ```
+
+    In case of using Selenium Server 3.0 with Firefox browser since v48 or Google Chrome since v53 you must download [GeckoDriver](https://github.com/mozilla/geckodriver/releases) or [ChromeDriver](https://sites.google.com/a/chromium.org/chromedriver/downloads) and launch Selenium with it:
+
+    ```
+    # for Firefox
+    java -jar -Dwebdriver.gecko.driver=~/geckodriver ~/selenium-server-standalone-3.xx.x.jar
+    
+    # for Google Chrome
+    java -jar -Dwebdriver.chrome.driver=~/chromedriver ~/selenium-server-standalone-3.xx.x.jar
+    ``` 
+    
+    As an alternative way you can use already configured Docker container with older versions of Selenium and Firefox:
+    
+    ```
+    docker run --net=host selenium/standalone-firefox:2.53.0
+    ```
+
+5. (Optional) Create `yii2_basic_tests` database and update it by applying migrations if you have them.
+
+   ```
+   tests/bin/yii migrate
+   ```
+
+   The database configuration can be found at `config/test_db.php`.
+
+
+6. Start web server:
+
+    ```
+    tests/bin/yii serve
+    ```
+
+7. Now you can run all available tests
+
+   ```
+   # run all available tests
+   vendor/bin/codecept run
+
+   # run acceptance tests
+   vendor/bin/codecept run acceptance
+
+   # run only unit and functional tests
+   vendor/bin/codecept run unit,functional
+   ```
+
+### Code coverage support
+
+By default, code coverage is disabled in `codeception.yml` configuration file, you should uncomment needed rows to be able
+to collect code coverage. You can run your tests and collect coverage with the following command:
+
+```
+#collect coverage for all tests
+vendor/bin/codecept run -- --coverage-html --coverage-xml
+
+#collect coverage only for unit tests
+vendor/bin/codecept run unit -- --coverage-html --coverage-xml
+
+#collect coverage for unit and functional tests
+vendor/bin/codecept run functional,unit -- --coverage-html --coverage-xml
+```
+
+You can see code coverage output under the `tests/_output` directory.
